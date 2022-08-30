@@ -9,7 +9,10 @@ Conway Game of Life Implementation in Ruby
 
 ## Install dependencies
 
-TBD
+```
+bundle install
+bundle binstubs --all
+```
 
 ## How to build
 
@@ -21,8 +24,17 @@ TBD
 
 ## How to test
 
-TBD
+You need to install dependencies first, then run this (run on this project path):
+
+```bash
+bin/rspec
+```
+
+After running command above, you can see the test coverage by `open coverage/index.html`.
 
 ## How to lint
 
-TBD
+You need to install dependencies first, then run this (run on this project path):
+```bash
+bin/rubocop lib spec --autocorrect
+```
