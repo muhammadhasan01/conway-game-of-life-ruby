@@ -42,5 +42,16 @@ module Conway
       end
       lst
     end
+
+    def freq_dead_cell
+      freq = Hash.new(0)
+      @alive_cells.each do |p|
+        neighboring_cells = get_neighboring_cells(p)
+        neighboring_cells.each do |c|
+          freq[c] = freq[c] + 1 unless @alive_cells.include?(c)
+        end
+      end
+      freq
+    end
   end
 end

@@ -54,4 +54,17 @@ describe 'CellHandler' do
       end
     end
   end
+
+  describe '#freq_dead_cell' do
+    context 'given certain state' do
+      cell_handler = Conway::CellHandler.new(Set[[0, 0]])
+      freq = cell_handler.freq_dead_cell
+      expected = { [0, 1] => 1, [0, -1] => 1, [1, 0] => 1,
+                   [-1, 0] => 1, [1, -1] => 1,
+                   [1, 1] => 1, [-1, 1] => 1, [-1, -1] => 1 }
+      it 'should return correct cells to be dead' do
+        expect(freq).to eq(expected)
+      end
+    end
+  end
 end
