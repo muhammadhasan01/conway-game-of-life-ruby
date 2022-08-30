@@ -32,7 +32,7 @@ module Conway
       return false unless @alive_cells.include?(pos)
 
       num = get_num_of_surviving_cells(pos)
-      [2].include?(num)
+      [2, 3].include?(num)
     end
   end
 end
