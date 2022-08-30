@@ -53,5 +53,14 @@ module Conway
       end
       freq
     end
+
+    def cells_to_be_resurrected
+      lst = []
+      freq = freq_dead_cell
+      freq.each do |key, value|
+        lst << key if value == 3
+      end
+      lst
+    end
   end
 end

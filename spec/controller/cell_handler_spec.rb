@@ -67,4 +67,15 @@ describe 'CellHandler' do
       end
     end
   end
+
+  describe '#cells_to_be_resurrected' do
+    context 'given certain state' do
+      cell_handler = Conway::CellHandler.new(Set[[0, 0], [1, 0], [-1, 0]])
+      lst = cell_handler.cells_to_be_resurrected
+      expected = [[0, 1], [0, -1]]
+      it 'should return correct resurrected cells' do
+        expect(lst).to eq(expected)
+      end
+    end
+  end
 end
