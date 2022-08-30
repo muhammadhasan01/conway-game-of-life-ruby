@@ -11,4 +11,15 @@ describe 'BoardRenderer' do
       end
     end
   end
+
+  describe '#dynamic' do
+    context 'given certain state' do
+      board_renderer = Conway::BoardRenderer.new(Set[[0, 0], [1, 0], [2, 0]])
+      res = board_renderer.render_dynamic
+      expected = board_renderer.render_board(-1, 3, -1, 1)
+      it 'should return correct rendering' do
+        expect(res).to eq(expected)
+      end
+    end
+  end
 end

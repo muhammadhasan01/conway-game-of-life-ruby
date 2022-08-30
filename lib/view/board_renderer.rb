@@ -19,5 +19,19 @@ module Conway
       end
       res
     end
+
+    def render_dynamic
+      min_x = INF
+      max_x = -INF
+      min_y = INF
+      max_y = -INF
+      @alive_cells.each do |x, y|
+        min_x = x unless min_x < x
+        max_x = x unless max_x > x
+        min_y = y unless min_y < y
+        max_y = y unless max_y > y
+      end
+      render_board(min_x - 1, max_x + 1, min_y - 1, max_y + 1)
+    end
   end
 end
