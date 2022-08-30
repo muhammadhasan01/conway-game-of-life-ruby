@@ -34,5 +34,13 @@ module Conway
       num = get_num_of_surviving_cells(pos)
       [2, 3].include?(num)
     end
+
+    def cells_to_be_dead
+      lst = []
+      @alive_cells.each do |e|
+        lst << e unless cell_survive?(e)
+      end
+      lst
+    end
   end
 end

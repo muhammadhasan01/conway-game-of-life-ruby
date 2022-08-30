@@ -43,4 +43,15 @@ describe 'CellHandler' do
       end
     end
   end
+
+  describe '#cells_to_be_dead' do
+    context 'given certain state' do
+      cell_handler = Conway::CellHandler.new(Set[[0, 0], [-1, 0], [0, 1], [3, 4]])
+      lst = cell_handler.cells_to_be_dead
+      expected = [[3, 4]]
+      it 'should return correct cells to be dead' do
+        expect(lst).to eq(expected)
+      end
+    end
+  end
 end
