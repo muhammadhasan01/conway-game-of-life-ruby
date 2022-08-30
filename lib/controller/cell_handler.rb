@@ -4,6 +4,10 @@ module Conway
     DIRECTION_X = [0, 0, 1, -1, 1, 1, -1, -1].freeze
     DIRECTION_Y = [1, -1, 0, 0, -1, 1, 1, -1].freeze
 
+    def initialize(alive_cells)
+      @alive_cells = alive_cells
+    end
+
     def get_neighboring_cells(pos)
       x, y = pos
       lst = []
@@ -13,6 +17,15 @@ module Conway
         lst << Conway.cell(cx, cy)
       end
       lst
+    end
+
+    def get_num_of_surviving_cells(pos)
+      neighboring_cells = get_neighboring_cells(pos)
+      num = 0
+      neighboring_cells.each do |e|
+        num += 1 if @alive_cells.include?(e)
+      end
+      num
     end
   end
 end
