@@ -22,6 +22,8 @@ module Conway
         cur_y -= 1
         cur_x = 0
       end
+      raise StandardError.new, 'There must be at least one alive cell' if alive_cells.empty?
+
       alive_cells
     end
   end

@@ -19,5 +19,14 @@ describe 'InputHandler' do
         expect(e.message).to eq("Invalid character '*' at (2, 0)")
       end
     end
+
+    context 'given empty file' do
+      input_handler = Conway::InputHandler.new
+      it 'should raise an exception' do
+        input_handler.state_from_file('inputs/empty.txt')
+      rescue StandardError => e
+        expect(e.message).to eq('There must be at least one alive cell')
+      end
+    end
   end
 end
