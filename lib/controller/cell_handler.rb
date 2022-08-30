@@ -27,5 +27,12 @@ module Conway
       end
       num
     end
+
+    def cell_survive?(pos)
+      return false unless @alive_cells.include?(pos)
+
+      num = get_num_of_surviving_cells(pos)
+      [2].include?(num)
+    end
   end
 end

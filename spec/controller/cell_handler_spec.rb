@@ -23,4 +23,15 @@ describe 'CellHandler' do
       end
     end
   end
+
+  describe '#is_cell_survive?' do
+    context 'given a cell on two neighboring value' do
+      cell_handler = Conway::CellHandler.new(Set[[0, 0], [-1, 0], [0, 1]])
+      is_survive = cell_handler.cell_survive?(Conway.cell(0, 0))
+      expected = true
+      it 'should return surviving cell as true' do
+        expect(is_survive).to eq(expected)
+      end
+    end
+  end
 end
