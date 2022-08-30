@@ -10,5 +10,14 @@ describe 'InputHandler' do
         expect(state).to eq(expected)
       end
     end
+
+    context 'given invalid file' do
+      input_handler = Conway::InputHandler.new
+      it 'should raise an exception' do
+        input_handler.state_from_file('inputs/invalid.txt')
+      rescue StandardError => e
+        expect(e.message).to eq("Invalid character '*' at (2, 0)")
+      end
+    end
   end
 end

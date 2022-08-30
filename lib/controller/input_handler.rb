@@ -4,6 +4,7 @@ module Conway
   class InputHandler
     ALIVE_CELL = Conway::BoardRenderer::ALIVE_CELL
     DEAD_CELL = Conway::BoardRenderer::DEAD_CELL
+    NEW_LINE = "\n".freeze
 
     def state_from_file(filename)
       cur_x = 0
@@ -11,6 +12,10 @@ module Conway
       alive_cells = Set[]
       File.foreach(filename) do |line|
         line.chars.each do |c|
+          unless [ALIVE_CELL, DEAD_CELL, NEW_LINE].include?(c)
+            raise StandardError.new, "Invalid character '#{c}' at (#{cur_x}, #{cur_y})"
+          end
+
           alive_cells.add(Conway.cell(cur_x, cur_y)) if c == ALIVE_CELL
           cur_x += 1
         end
